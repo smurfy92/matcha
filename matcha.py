@@ -40,8 +40,10 @@ def create():
 	if request.method == 'POST':
 		username = request.form["email"]
 		password = request.form["password"]
-		if user is None:
+		if len(username) < 5:
 			return render_template('create.html', error="email")
+		if len(password) < 5:
+			return render_template('create.html', error="password")
 		cursor = mysql.connect().cursor()
 		cursor.execute("SELECT * from User where Username='" + username + "' and Password='" + password + "'")
 		data = cursor.fetchone()
