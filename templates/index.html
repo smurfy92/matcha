@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>{{ find }}</h1>
+coucou
+{% for locat in test %}
+	{{ locat }}
+{% endfor %}
+{% if error %}
+	{{ error }}
+{% endif %}
+{% endblock %}

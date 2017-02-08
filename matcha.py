@@ -1,4 +1,5 @@
-from flask import Flask, session, render_template, redirect, url_for, request, escape
+from flask import Flask, session, render_template, redirect, url_for, request, escape, json
+import requests
 from flaskext.mysql import MySQL
  
 mysql = MySQL()
@@ -13,7 +14,7 @@ mysql.init_app(app)
 @app.route("/")
 def index():
 	if 'username' in session :
-		return 'Logged in as %s' % escape(session['username'])
+		return render_template('index.html', locate=locate, test=test)
 	else:	
 		return redirect(url_for("login"))
 
